@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0f172a;
+  --color-primary-light: #334155;
+  --color-accent: #f43f5e;
+  --color-bg: #fcfcfc;
+  --color-card: #ffffff;
+  --color-text-main: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #f1f5f9;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: var(--color-text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 0px;
+  }
+}
+
+@layer components {
+  .classy-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 0px;
+    box-shadow: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .classy-card:hover {
+    border-color: #000000;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 0px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-primary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .btn-primary:hover {
+    background: #f43f5e;
+    color: white;
+    border-color: #f43f5e;
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--color-text-main);
+    padding: 12px 28px;
+    border-radius: 0px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-primary);
+    background: #f8fafc;
+  }
+
+  .btn-danger {
+    background: #fff1f2;
+    color: #e11d48;
+    padding: 10px 24px;
+    border-radius: 0px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #fecdd3;
+    cursor: pointer;
+  }
+
+  .btn-danger:hover {
+    background: #e11d48;
+    color: white;
+  }
+
+  .btn-success {
+    background: #f0fdf4;
+    color: #16a34a;
+    padding: 12px 28px;
+    border-radius: 0px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #bbf7d0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-success:hover {
+    background: #16a34a;
+    color: white;
+  }
+
+  .input-field {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0px;
+    padding: 14px 20px;
+    color: var(--color-text-main);
+    font-size: 15px;
+    width: 100%;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .input-field:focus {
+    background: white;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.05);
+  }
+
+  .input-field::placeholder {
+    color: #94a3b8;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #f43f5e 0%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .product-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .product-card:hover {
+    border-color: var(--color-primary);
+  }
+
+  .status-badge {
+    padding: 4px 14px;
+    border-radius: 0px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .status-pending { background: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
+  .status-confirmed { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+  .status-processing { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
+  .status-shipped { background: #eef2ff; color: #4338ca; border: 1px solid #c7d2fe; }
+  .status-delivered { background: #f0fdf4; color: #16a34a; border: 1px solid #86efac; }
+  .status-cancelled { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
