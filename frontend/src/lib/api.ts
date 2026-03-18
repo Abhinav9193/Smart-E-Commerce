@@ -1,4 +1,9 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api';
+const getApiBase = () => {
+  const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api';
+  return base.endsWith('/api') ? base : `${base}/api`;
+};
+
+const API_BASE = getApiBase();
 
 interface FetchOptions extends RequestInit {
   token?: string;
