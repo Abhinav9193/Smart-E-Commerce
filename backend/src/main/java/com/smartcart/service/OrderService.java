@@ -108,10 +108,9 @@ public class OrderService {
         return toDTO(order);
     }
 
-    public List<OrderDTO> getUserOrders(User user) {
-        return orderRepository.findByUserOrderByCreatedAtDesc(user).stream()
-                .map(this::toDTO)
-                .collect(Collectors.toList());
+    public Page<OrderDTO> getUserOrders(User user, Pageable pageable) {
+        return orderRepository.findByUserOrderByCreatedAtDesc(user, pageable)
+                .map(this::toDTO);
     }
 
     public OrderDTO getOrderById(Long orderId, User user) {

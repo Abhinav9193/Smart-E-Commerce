@@ -5,6 +5,9 @@ import com.smartcart.entity.Order;
 import com.smartcart.entity.User;
 import com.smartcart.service.InvoiceService;
 import com.smartcart.service.OrderService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -42,8 +45,10 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<OrderDTO>> getUserOrders(@AuthenticationPrincipal User user) {
-        return ResponseEntity.ok(orderService.getUserOrders(user));
+    public ResponseEntity<Page<OrderDTO>> getUserOrders(
+            @AuthenticationPrincipal User user,
+            @PageableDefault(size = 10) Pageable pageable) {
+        return ResponseEntity.ok(orderService.getUserOrders(user, pageable));
     }
 
     @GetMapping("/{orderId}")
